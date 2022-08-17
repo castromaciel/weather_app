@@ -4,7 +4,7 @@ import { SideBar } from '../components/sideBar';
 
 const Home = () => {
   return (
-    <section className='container-fluid'>
+    <section className='container-fluid bg-dark'>
       <div className='row'>
         <div className='col-4'>
           <SideBar />

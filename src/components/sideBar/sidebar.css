@@ -1,0 +1,11 @@
+.sidebar-view{
+  height: 100vh;
+}
+
+.sidebar-view ul li{
+  cursor: pointer;
+}
+
+.sidebar-view ul li:hover{
+  background-color: rgba(177, 177, 177, 0.4);
+}
