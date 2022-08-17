@@ -4,16 +4,14 @@ import { SideBar } from '../components/sideBar';
 
 const Home = () => {
   return (
-    <section className='container-fluid bg-dark'>
-      <div className='row'>
-        <div className='col-4'>
-          <SideBar />
-        </div>
+    <main className='container-fluid'>
+      <section className='row'>
+        <SideBar className={'col-4 bg-dark'}/>
         <div className='col-8'>
           <Content />
         </div>
-      </div>
-    </section>
+      </section>
+    </main>
   );
 };
 

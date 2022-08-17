@@ -2,20 +2,14 @@ import React from 'react';
 
 const Content = () => {
   return (
-    <>
-      <div className='card'>
-        <img src='...' className='card-img-top' alt='...' />
-        <div className='card-body'>
-          <h5 className='card-title'>Card title</h5>
-          <p className='card-text'>
-            Lorem
-          </p>
-          <a href='#' className='btn btn-primary'>
-            Go somewhere
-          </a>
-        </div>
-      </div>
-    </>
+    <article className='card col-3 mt-3'>
+      <h5 className='card-title text-center'>Day</h5>
+      <img src='...' className='card-img-top' alt='Weather' />
+      <section className='card-body d-flex justify-content-around align-items-center'>
+        <p>Max</p>
+        <p>Min</p>
+      </section>
+    </article>
   );
 };
 

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './sidebar.css';
 
-const SideBar = () => {
+const SideBar = ({ className }) => {
   const key = '6be8c28794924ed8a2a184922222905';
   const [inputValue, setInputValue] = useState('');
   const [cities, setCities] = useState([]);
@@ -21,7 +21,7 @@ const SideBar = () => {
   };
 
   return (
-    <div className='sidebar-view'>
+    <div className={`sidebar-view ${className}`}>
       {
         isAvailableSearch
           ? (<form onSubmit={handleSubmit} className='input-group mt-3'>
