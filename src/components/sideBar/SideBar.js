@@ -1,40 +1,35 @@
-import React from 'react';
-import { Content } from '../content';
+import React, { useState } from 'react';
 
 const SideBar = () => {
+  const key = '6be8c28794924ed8a2a184922222905';
+  const [inputValue, setInputValue] = useState('');
+  const [cities, setCities] = useState([]);
+
+  const handleChange = (e) => {
+    setInputValue(e.target.value);
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    if (inputValue.length > 3) {
+      const response = await fetch(`http://api.weatherapi.com/v1/search.json?key=${key}&q=${inputValue}`);
+      const data = await response.json();
+      setCities(data);
+    }
+  };
+
   return (
     <>
+      <form onSubmit={handleSubmit}>
+        <input onChange={handleChange}/>
+      </form>
       <div>
-        <h5 className='offcanvas-title'>Offcanvas</h5>
-      </div>
-      <div className='offcanvas-body'>
-        <div>Lorem ipsum</div>
-        <div className='dropdown mt-3'>
-          <button
-            className='btn btn-secondary dropdown-toggle'
-            type='button'
-            data-bs-toggle='dropdown'
-          >
-            Dropdown button
-          </button>
-          <ul className='dropdown-menu'>
-            <li>
-              <a className='dropdown-item' href='#'>
-                Action
-              </a>
-            </li>
-            <li>
-              <a className='dropdown-item' href='#'>
-                Another action
-              </a>
-            </li>
-            <li>
-              <a className='dropdown-item' href='#'>
-                Something else here
-              </a>
-            </li>
-          </ul>
-        </div>
+        <ul>
+          {
+            cities?.map(city => (
+            <li key={city.id}>{city.name}, {city.region}</li>))
+          }
+        </ul>
       </div>
     </>
   );
