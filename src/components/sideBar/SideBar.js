@@ -6,6 +6,7 @@ const SideBar = ({ className }) => {
   const [inputValue, setInputValue] = useState('');
   const [cities, setCities] = useState([]);
   const [isAvailableSearch, setIsAvailableSearch] = useState(false);
+  const [weather, setWeather] = useState({});
 
   const handleChange = (e) => {
     setInputValue(e.target.value);
@@ -18,6 +19,20 @@ const SideBar = ({ className }) => {
       const data = await response.json();
       setCities(data);
     }
+  };
+
+  const handleClick = async (city) => {
+    const { lat, lon } = city;
+    const response = await fetch(`http://api.weatherapi.com/v1/forecast.json?key=${key}&q=${lat},${lon}`);
+    const { current, forecast } = await response.json();
+    setWeather({
+      condition: current.condition.text,
+      current: current.temp_c,
+      image: current.condition.icon,
+      min: forecast.forecastday[0].day.mintemp_c,
+      max: forecast.forecastday[0].day.maxtemp_c,
+    });
+    setCities([]);
   };
 
   return (
@@ -41,12 +56,19 @@ const SideBar = ({ className }) => {
           <li
             key={city.id}
             className='list-group-item'
-            onClick={() => console.log(city)}
+            onClick={() => handleClick(city)}
           >
-              {city.name}, {city.region}
+            {city.name}, {city.region}
           </li>))
         }
       </ul>
+      <section>
+        <article className='card col-12 mt-3 d-flex flex-column align-items-center'>
+          <img src={weather.image} className='card-img-top w-50' alt='Weather' />
+          <h2 className='card-title mt-3'>{weather.current}°C</h2>
+          <h4>{weather.condition}</h4>
+        </article>
+      </section>
     </div>
   );
 };
