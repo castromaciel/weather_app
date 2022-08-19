@@ -11,7 +11,7 @@ const CardHighlights = ({ className, hightlight }) => {
   }, [unit]);
 
   return (
-    <article className={`card mt-3 ${className} d-flex align-items-center justify-content-around`}>
+    <article className={`card my-3 ${className} d-flex align-items-center justify-content-around`}>
       <h5 className='card-title text-center pt-3'> {hightlight.title} </h5>
       <section className='d-flex align-items-center'>
         <h1 className='me-1'>{hightlight.property}</h1>
