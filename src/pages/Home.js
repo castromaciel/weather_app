@@ -6,7 +6,7 @@ const Home = () => {
   return (
     <main className='container-fluid'>
       <section className='row'>
-        <SideBar className={'col-4 bg-dark'}/>
+        <SideBar className={'col-3 bg-dark'}/>
         <div className='col-8'>
           <Content />
         </div>

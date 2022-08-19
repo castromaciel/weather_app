@@ -16,7 +16,7 @@ const SearchBar = ({ setCities, isAvailableSearch, setIsAvailableSearch }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (inputValue.length > 3) {
-      setCities(data);
+      setCities(data.slice(0, 4));
     }
   };
 
