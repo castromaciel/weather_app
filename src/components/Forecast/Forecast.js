@@ -4,7 +4,6 @@ import { Card } from '../Card';
 
 const Forecast = () => {
   const weeklyForecast = useWeeklyForecastContext();
-  console.log(weeklyForecast);
 
   return (
     <section className='row justify-content-between mx-5 px-5'>
