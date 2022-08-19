@@ -7,17 +7,21 @@ const useFetch = (url) => {
     error: null,
     data: null,
   });
+
   const getData = async () => {
     const { data } = await axios(url);
+
     setDataFetch({
       loading: false,
       error: null,
       data,
     });
   };
+
   useEffect(() => {
     getData();
   }, [url]);
+
   return dataFetch;
 };
 
