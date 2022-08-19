@@ -1,14 +1,13 @@
 import { useState } from 'react';
 import useFetch from '../../hook/useFetch';
 
-const SearchBar = ({ setCities, isAvailableSearch, setIsAvailableSearch }) => {
+const SearchBar = ({ setCities }) => {
   const key = '6be8c28794924ed8a2a184922222905';
   const [inputValue, setInputValue] = useState('');
+  const [isError, setIsError] = useState(false);
 
   const handleChange = (e) => {
-    if (e.target.value.length > 3) {
-      setInputValue(e.target.value);
-    }
+    setInputValue(e.target.value);
   };
 
   const { data } = useFetch(`http://api.weatherapi.com/v1/search.json?key=${key}&q=${inputValue}`);
@@ -17,15 +16,20 @@ const SearchBar = ({ setCities, isAvailableSearch, setIsAvailableSearch }) => {
     e.preventDefault();
     if (inputValue.length > 3) {
       setCities(data.slice(0, 4));
-      setIsAvailableSearch(!isAvailableSearch);
+      setIsError(false);
+      return;
     }
+    setIsError(true);
   };
 
   return (
-    <form onSubmit={handleSubmit} className='input-group mt-3'>
-      <input className='form-control ms-2' onChange={handleChange} />
-      <button type='submit' className='btn btn-outline-primary me-2'>Search</button>
-    </form>
+    <>
+      <form onSubmit={handleSubmit} className='input-group mt-3'>
+        <input className='form-control ms-2' onChange={handleChange} placeholder='Search place'/>
+        <button type='submit' className='btn btn-outline-primary me-2' onClick={handleSubmit}>Search</button>
+      </form>
+      { isError && <span className='text-white ms-2 text-danger'>You must write at least 3 letters !! </span> }
+    </>
   );
 };
 

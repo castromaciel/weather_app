@@ -2,7 +2,7 @@ import React from 'react';
 import './home.css';
 import { Forecast } from '../components/Forecast';
 import { Highlights } from '../components/Highlights';
-import { SideBar } from '../components/sideBar';
+import { SideBar } from '../components/SideBar';
 
 const Home = () => {
   return (

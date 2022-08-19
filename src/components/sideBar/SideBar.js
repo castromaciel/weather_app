@@ -2,7 +2,9 @@ import React, { useState } from 'react';
 import useFetch from '../../hook/useFetch';
 import { useHightlightsToggleContext } from '../../Provider/HightlightsProvider';
 import { useWeeklyForecastToggleContext } from '../../Provider/WeeklyForecastProvider';
-import SearchBar from '../searchBar/SearchBar';
+import SearchBar from '../SearchBar/SearchBar';
+import { SearchBox } from '../SearchBox';
+import { WeatherCard } from '../WeatherCard';
 import './sidebar.css';
 
 const SideBar = ({ className }) => {
@@ -55,6 +57,7 @@ const SideBar = ({ className }) => {
     setWeeklyForecast(forecast.forecastday);
     setCities([]);
     setShowData(true);
+    setIsAvailableSearch(!isAvailableSearch);
   };
 
   return (
@@ -74,49 +77,12 @@ const SideBar = ({ className }) => {
               Search city
             </button>)
       }
-      <ul className='text-white list-group mt-2'>
-        {
-          cities?.map(city => (
-          <li
-            key={city.id}
-            className='mx-2 list-city-item mb-3'
-            onClick={() => handleClick(city)}
-          >
-            <p className='m-0'>{city.name}</p>
-            <span className="material-symbols-outlined">
-              keyboard_arrow_right
-            </span>
-          </li>))
-        }
-      </ul>
       {
-        showData && (
-          <section className='d-flex flex-column justify-content-around h-75'>
-            <article className='col-12 d-flex flex-column align-items-center text-center text-white'>
-              <img src={weather.image} className='card-img-top w-50' alt='Weather' />
-              <h1 className='temperature-text mt-3'>{Math.round(weather.current)}°C</h1>
-              <h4 className='temperature-text'>{weather.condition}</h4>
-            </article>
-            <article className='col-12 d-flex justify-content-center align-items-center text-white'>
-              <span>
-                Today
-              </span>
-              <span className='mx-2'>
-                •
-              </span>
-              <span>
-                { Date().slice(0, 10) }
-              </span>
-            </article>
-            <article className='col-12 d-flex justify-content-center align-items-center text-white'>
-              <span className='material-symbols-outlined me-2'>
-                location_on
-              </span>
-              <span>
-                { currentCity }
-              </span>
-            </article>
-          </section>
+        isAvailableSearch && <SearchBox cities={cities} handleClick={handleClick}/>
+      }
+      {
+        showData && !isAvailableSearch && (
+          <WeatherCard weather={weather} currentCity={currentCity} />
         )
       }
     </div>
