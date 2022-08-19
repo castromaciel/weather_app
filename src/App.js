@@ -1,10 +1,13 @@
 import { Home } from './pages';
+import { HightlightsProvider } from './Provider/HightlightsProvider';
 import { WeeklyForecastProvider } from './Provider/WeeklyForecastProvider';
 
 function App() {
   return (
     <WeeklyForecastProvider>
-      <Home />
+      <HightlightsProvider>
+        <Home />
+      </HightlightsProvider>
     </WeeklyForecastProvider>
   );
 }
