@@ -13,20 +13,6 @@ const SideBar = ({ className }) => {
   const [currentCity, setCurrentCity] = useState('');
   const [weather, setWeather] = useState({});
 
-  // const handleClick = async (city) => {
-  //   const { lat, lon } = city;
-  //   const response = await fetch(`http://api.weatherapi.com/v1/forecast.json?key=${key}&q=${lat},${lon}`);
-  //   const { current, forecast } = await response.json();
-  //   setWeather({
-  //     condition: current.condition.text,
-  //     current: current.temp_c,
-  //     image: current.condition.icon,
-  //     min: forecast.forecastday[0].day.mintemp_c,
-  //     max: forecast.forecastday[0].day.maxtemp_c,
-  //   });
-  //   setCities([]);
-  // };
-
   const response = useFetch(`http://api.weatherapi.com/v1/forecast.json?key=${key}&q=${latitude},${longitude}`);
   const handleClick = (city) => {
     const { lat, lon, name } = city;
@@ -68,10 +54,13 @@ const SideBar = ({ className }) => {
           cities?.map(city => (
           <li
             key={city.id}
-            className='list-group-item'
+            className='mx-2 list-city-item mb-3'
             onClick={() => handleClick(city)}
           >
-            {city.name}, {city.region}
+            <p className='m-0'>{city.name}</p>
+            <span className="material-symbols-outlined">
+              keyboard_arrow_right
+            </span>
           </li>))
         }
       </ul>

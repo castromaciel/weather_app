@@ -25,6 +25,15 @@ h4{
   background-color: rgba(177, 177, 177, 0.4);
 }
 
+.list-city-item{
+  display: flex;
+  justify-content: space-between;
+  margin: 0;
+  padding: .6em .4em;
+  border: 1px solid #ffffff;
+  list-style: none;
+}
+
 .material-symbols-outlined {
   font-variation-settings:
   'FILL' 0,

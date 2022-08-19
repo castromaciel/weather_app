@@ -17,12 +17,14 @@ const SearchBar = ({ setCities, isAvailableSearch, setIsAvailableSearch }) => {
     e.preventDefault();
     if (inputValue.length > 3) {
       setCities(data.slice(0, 4));
+      setIsAvailableSearch(!isAvailableSearch);
     }
   };
 
   return (
     <form onSubmit={handleSubmit} className='input-group mt-3'>
-      <input className='form-control' onChange={handleChange} onBlur={() => setIsAvailableSearch(!isAvailableSearch)}/>
+      <input className='form-control ms-2' onChange={handleChange} />
+      <button type='submit' className='btn btn-outline-primary me-2'>Search</button>
     </form>
   );
 };
