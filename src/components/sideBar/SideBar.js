@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 import useFetch from '../../hook/useFetch';
+import { useWeeklyForecastToggleContext } from '../../Provider/WeeklyForecastProvider';
 import SearchBar from '../searchBar/SearchBar';
 import './sidebar.css';
 
 const SideBar = ({ className }) => {
-  const key = '6be8c28794924ed8a2a184922222905';
+  const key = '24dd6464dfb04d5e891134703221908 ';
   const [cities, setCities] = useState([]);
   const [isAvailableSearch, setIsAvailableSearch] = useState(false);
   const [showData, setShowData] = useState(false);
@@ -12,8 +13,11 @@ const SideBar = ({ className }) => {
   const [longitude, setLongitude] = useState(null);
   const [currentCity, setCurrentCity] = useState('');
   const [weather, setWeather] = useState({});
+  const [highlights, setHighlights] = useState({});
 
-  const response = useFetch(`http://api.weatherapi.com/v1/forecast.json?key=${key}&q=${latitude},${longitude}`);
+  const setWeeklyForecast = useWeeklyForecastToggleContext();
+
+  const response = useFetch(`http://api.weatherapi.com/v1/forecast.json?key=${key}&q=${latitude},${longitude}&days=5`);
   const handleClick = (city) => {
     const { lat, lon, name } = city;
     setCurrentCity(name);
@@ -28,6 +32,13 @@ const SideBar = ({ className }) => {
       min: forecast.forecastday[0].day.mintemp_c,
       max: forecast.forecastday[0].day.maxtemp_c,
     });
+    setHighlights({
+      wind_mph: current.wind_mph,
+      pressure_mb: current.pressure_mb,
+      humidity: current.humidity,
+      vis_miles: current.vis_miles,
+    });
+    setWeeklyForecast(forecast.forecastday);
     setCities([]);
     setShowData(true);
   };
