@@ -10,7 +10,7 @@ const Highlights = () => {
       {
         hightlights?.map(hightlight => (
           <CardHighlights
-            className={'col-5 text-white bg-transparent'}
+            className={'col-5 text-white bg-darkblue-75'}
             hightlight={hightlight}
             key={hightlight.title}
           />

@@ -11,7 +11,7 @@ const Forecast = () => {
       <article className='row justify-content-around'>
         {
           weeklyForecast?.map(forecast => (
-            <Card key={forecast?.date_epoch} className={'text-white bg-transparent col-2 '} forecast={forecast}/>
+            <Card key={forecast?.date_epoch} className={'text-white bg-darkblue-75 col-2 '} forecast={forecast}/>
           ))
         }
       </article>
