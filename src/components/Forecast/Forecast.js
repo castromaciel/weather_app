@@ -4,13 +4,12 @@ import { Card } from '../Card';
 
 const Forecast = () => {
   const weeklyForecast = useWeeklyForecastContext();
-  console.log(weeklyForecast);
 
   return (
-    <section className='row justify-content-between mx-5 px-5'>
+    <section className='row justify-content-center justify-content-lg-between mx-lg-5 px-lg-5'>
       {
         weeklyForecast?.map(forecast => (
-          <Card key={forecast?.date_epoch} className={'text-white bg-darkblue-75 col-2 '} forecast={forecast}/>
+          <Card key={forecast?.date_epoch} className={'text-white bg-darkblue-75 col-8 col-lg-2'} forecast={forecast}/>
         ))
       }
     </section>
