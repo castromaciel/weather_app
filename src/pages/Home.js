@@ -9,7 +9,7 @@ const Home = () => {
     <main className='container-fluid'>
       <section className='row'>
         <SideBar className={'col-3 bg-darkblue-75'}/>
-        <div className='col-9 bg-darkblue text-white'>
+        <div className='d-flex flex-column justify-content-evenly col-9 bg-darkblue text-white'>
           <Forecast />
           <Highlights />
         </div>

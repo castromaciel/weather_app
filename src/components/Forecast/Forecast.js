@@ -7,14 +7,12 @@ const Forecast = () => {
   console.log(weeklyForecast);
 
   return (
-    <section className='container'>
-      <article className='row justify-content-around'>
-        {
-          weeklyForecast?.map(forecast => (
-            <Card key={forecast?.date_epoch} className={'text-white bg-darkblue-75 col-2 '} forecast={forecast}/>
-          ))
-        }
-      </article>
+    <section className='row justify-content-between mx-5 px-5'>
+      {
+        weeklyForecast?.map(forecast => (
+          <Card key={forecast?.date_epoch} className={'text-white bg-darkblue-75 col-2 '} forecast={forecast}/>
+        ))
+      }
     </section>
   );
 };
