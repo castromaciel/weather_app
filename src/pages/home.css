@@ -1,0 +1,17 @@
+body{
+  font-family: Raleway;
+  font-style: normal;
+  letter-spacing: 0;
+}
+
+.bg-darkblue{
+  background-color: #100e1d;
+}
+
+.bg-darkblue-75{
+  background-color: #1e213a;
+}
+
+.bg-calidyellow{
+  background-color: #ffec65;
+}

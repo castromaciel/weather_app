@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import useFetch from '../../hook/useFetch';
+import { useHightlightsToggleContext } from '../../Provider/HightlightsProvider';
 import { useWeeklyForecastToggleContext } from '../../Provider/WeeklyForecastProvider';
 import SearchBar from '../searchBar/SearchBar';
 import './sidebar.css';
@@ -13,9 +14,9 @@ const SideBar = ({ className }) => {
   const [longitude, setLongitude] = useState(null);
   const [currentCity, setCurrentCity] = useState('');
   const [weather, setWeather] = useState({});
-  const [highlights, setHighlights] = useState({});
 
   const setWeeklyForecast = useWeeklyForecastToggleContext();
+  const setHightlights = useHightlightsToggleContext();
 
   const response = useFetch(`http://api.weatherapi.com/v1/forecast.json?key=${key}&q=${latitude},${longitude}&days=5`);
   const handleClick = (city) => {
@@ -32,12 +33,25 @@ const SideBar = ({ className }) => {
       min: forecast.forecastday[0].day.mintemp_c,
       max: forecast.forecastday[0].day.maxtemp_c,
     });
-    setHighlights({
-      wind_mph: current.wind_mph,
-      pressure_mb: current.pressure_mb,
-      humidity: current.humidity,
-      vis_miles: current.vis_miles,
-    });
+    setHightlights([
+      {
+        property: current.wind_mph,
+        wind_dir: current.wind_dir,
+        title: 'Wind Status',
+      },
+      {
+        property: current.humidity,
+        title: 'Humidity',
+      },
+      {
+        property: current.pressure_mb,
+        title: 'Air Pressure',
+      },
+      {
+        property: current.vis_miles,
+        title: 'Visibility',
+      },
+    ]);
     setWeeklyForecast(forecast.forecastday);
     setCities([]);
     setShowData(true);

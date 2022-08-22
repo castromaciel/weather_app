@@ -1,11 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Raleway&display=swap');
 
-.temperature-text{
-  font-family: Raleway;
-  font-style: normal;
-  letter-spacing: 0;
-}
-
 h1{
   font-size: 5em;
 }
