@@ -6,13 +6,16 @@ const Forecast = () => {
   const weeklyForecast = useWeeklyForecastContext();
 
   return (
-    <section className='row justify-content-center justify-content-lg-between mx-lg-5 px-lg-5'>
-      {
-        weeklyForecast?.map(forecast => (
-          <Card key={forecast?.date_epoch} className={'text-white bg-darkblue-75 col-8 col-lg-2'} forecast={forecast}/>
-        ))
-      }
-    </section>
+    <div className='mx-lg-5 px-lg-5'>
+      <h3 className='mt-3'>Weekly Forecast</h3>
+      <section className='row justify-content-evenly justify-content-lg-between'>
+        {
+          weeklyForecast?.map(forecast => (
+            <Card key={forecast?.date_epoch} className={'col-5 col-lg-2 text-white bg-darkblue-75'} forecast={forecast}/>
+          ))
+        }
+      </section>
+    </div>
   );
 };
 

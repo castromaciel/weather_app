@@ -34,10 +34,11 @@ const Home = () => {
           : (
             <section className='row'>
               <SideBar className={'col-md-5 col-lg-3 bg-darkblue-75'} coords={coords}/>
-              <div className='d-flex flex-column justify-content-evenly col-md-7 col-lg-9  bg-darkblue text-white'>
+              <div className='d-flex flex-column col-md-7 col-lg-9  bg-darkblue text-white'>
                 <Forecast />
-                <Highlights />
+                <Highlights className={'d-md-none d-lg-flex flex-column mx-lg-5 px-lg-5 mb-5 mb-lg-0 '}/>
               </div>
+              <Highlights className={'d-none d-md-flex d-lg-none flex-column bg-darkblue text-white pb-5'}/>
             </section>
           )
       }
