@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import './home.css';
 import { Forecast } from '../components/Forecast';
 import { Highlights } from '../components/Highlights';
-import { SideBar } from '../components/SideBar';
+import { SideBar } from '../components/sideBar';
 
 const Home = () => {
   const geolocationAPI = navigator.geolocation;

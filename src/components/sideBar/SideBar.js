@@ -2,9 +2,9 @@ import React, { useEffect, useState } from 'react';
 import useFetch from '../../hook/useFetch';
 import { useHightlightsToggleContext } from '../../Provider/HightlightsProvider';
 import { useWeeklyForecastToggleContext } from '../../Provider/WeeklyForecastProvider';
-import SearchBar from '../SearchBar/SearchBar';
+import { SearchBar } from '../searchBar';
 import { SearchBox } from '../SearchBox';
-import { WeatherCard } from '../WeatherCard';
+import WeatherCard from '../WeatherCard/WeatherCard';
 import './sidebar.css';
 
 const SideBar = ({ className, coords }) => {
