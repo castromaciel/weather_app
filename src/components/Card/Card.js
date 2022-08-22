@@ -1,13 +1,13 @@
 import React from 'react';
 
-const Card = ({ className, title }) => {
+const Card = ({ className, forecast }) => {
   return (
-    <article className={`card mt-3 ${className}`}>
-      <h5 className='card-title text-center'>{ title || 'Day' }</h5>
-      <img src='...' className='card-img-top' alt='Weather' />
-      <section className='card-body d-flex justify-content-around align-items-center'>
-        <p>Max</p>
-        <p>Min</p>
+    <article className={`card mt-3 ${className} d-flex align-items-center`}>
+      <h5 className='card-title text-center pt-3'>{ forecast?.date || 'Day' }</h5>
+      <img src={forecast?.day?.condition?.icon} className='w-50' alt='Weather' />
+      <section className='card-body d-flex'>
+        <p className='me-2 my-0'>{forecast?.day?.maxtemp_c}°C</p>
+        <p className='ms-2 my-0'>{forecast?.day?.mintemp_c}°C</p>
       </section>
     </article>
   );

@@ -1,8 +1,11 @@
 import { Home } from './pages';
+import { WeeklyForecastProvider } from './Provider/WeeklyForecastProvider';
 
 function App() {
   return (
-    <Home />
+    <WeeklyForecastProvider>
+      <Home />
+    </WeeklyForecastProvider>
   );
 }
 

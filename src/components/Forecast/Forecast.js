@@ -1,14 +1,20 @@
 import React from 'react';
+import { useWeeklyForecastContext } from '../../Provider/WeeklyForecastProvider';
 import { Card } from '../Card';
 
 const Forecast = () => {
+  const weeklyForecast = useWeeklyForecastContext();
+  console.log(weeklyForecast);
+
   return (
-    <section className='container d-flex justify-content-around '>
-      <Card className={'text-white bg-transparent col-2 '} />
-      <Card className={'text-white bg-transparent col-2 '} />
-      <Card className={'text-white bg-transparent col-2 '} />
-      <Card className={'text-white bg-transparent col-2 '} />
-      <Card className={'text-white bg-transparent col-2 '} />
+    <section className='container'>
+      <article className='row justify-content-around'>
+        {
+          weeklyForecast?.map(forecast => (
+            <Card key={forecast?.date_epoch} className={'text-white bg-transparent col-2 '} forecast={forecast}/>
+          ))
+        }
+      </article>
     </section>
   );
 };
