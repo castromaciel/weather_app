@@ -29,7 +29,7 @@ const SearchBar = ({ setCities, handleClose }) => {
       <form onSubmit={handleSubmit} className='input-group mt-3'>
         <input className='form-control ms-2' onChange={handleChange} placeholder='Search place'/>
         <button type='submit' className='btn btn-outline-primary me-2' onClick={handleSubmit}>Search</button>
-        <button type='submit' className='btn btn-outline-primary me-2' onClick={handleClose}>Close</button>
+        <button type='button' className='btn btn-outline-secondary me-2' onClick={handleClose}>Close</button>
       </form>
       { isError && <span className='text-white ms-2 text-danger'>You must write at least 3 letters !! </span> }
     {hasError
