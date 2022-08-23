@@ -93,11 +93,15 @@ const SideBar = ({ className, coords }) => {
     }
   }, [currentCoords?.lat, currentCoords?.lon, response?.data]);
 
+  const handleClose = () => {
+    setIsAvailableSearch(!isAvailableSearch);
+    setCities([]);
+  };
   return (
     <div className={`sidebar-view ${className}`}>
       {
         isAvailableSearch
-          ? (<SearchBar setCities={setCities} />)
+          ? (<SearchBar setCities={setCities} handleClose={handleClose} />)
           : (<button
               className='ms-2 btn btn-outline-light my-3'
               type='button'
