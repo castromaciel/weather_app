@@ -4,18 +4,41 @@ import { useEffect, useState } from 'react';
 const useFetch = (url) => {
   const [dataFetch, setDataFetch] = useState({
     loading: true,
-    error: null,
+    hasError: false,
+    errorCode: null,
+    errorMessage: null,
     data: null,
   });
 
   const getData = async () => {
-    const { data } = await axios(url);
+    try {
+      const { data } = await axios(url);
 
-    setDataFetch({
-      loading: false,
-      error: null,
-      data,
-    });
+      setDataFetch({
+        loading: false,
+        hasError: false,
+        errorCode: null,
+        errorMessage: null,
+        data,
+      });
+    } catch (error) {
+      if (error.response) {
+        setDataFetch({
+          loading: false,
+          hasError: true,
+          errorCode: error.response.data.error.code,
+          errorMessage: error.message,
+          data: null,
+        });
+      }
+      setDataFetch({
+        loading: false,
+        hasError: true,
+        errorCode: error.response.data.error.code,
+        errorMessage: error.message,
+        data: null,
+      });
+    }
   };
 
   useEffect(() => {
