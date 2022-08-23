@@ -11,7 +11,7 @@ const SearchBox = ({ cities, handleClick }) => {
             onClick={() => handleClick(city)}
           >
             <p className='m-0'>{city.name}</p>
-            <span className="material-symbols-outlined">
+            <span className="material-symbols-outlined change">
               keyboard_arrow_right
             </span>
           </li>))

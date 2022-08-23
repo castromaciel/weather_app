@@ -24,6 +24,14 @@ h4{
   cursor: pointer;
 }
 
+.change{
+  display: none;
+}
+
+.sidebar-view ul li:hover > .change{
+  display: block;
+}
+
 .sidebar-view ul li:hover{
   background-color: rgba(177, 177, 177, 0.4);
   transition: all 500ms;
@@ -34,6 +42,6 @@ h4{
   justify-content: space-between;
   margin: 0;
   padding: .6em .4em;
-  border: 1px solid #ffffff;
+  border: 1px solid #ffffff00;
   list-style: none;
 }
